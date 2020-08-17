@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adelle Housker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 class="prompt">
+        What would you like to know about Adelle Housker?
+        <sup class="tooltip">
+          ℹ
+          <span class="tooltip__text">TOOLTIP  TEXT</span>
+        </sup>
+      </h1>
+    </div>
+    <div class="content">
+      <form class="question" onsubmit="return app.onSubmit()">
+        <input autofocus type="text" class="question__text" onblur="app.onBlur()">
+      </form>
+      <p class="answer training"></p>
+      <div class="tags nodisplay training">
+        <select name="tags">
+        </select>
+        <button class="button" onclick="app.updateCorpus()">
+          Update corpus
+        </button>
+        <!-- <div class="floater"></div> -->
+      </div>
+    </div>
+    <div class="footer">
+      <nav class="navigation">
+        <ul class="navigation__list">
+          <li id="resume"><a href="/resume"><img src="assets/resume.png"></a></li>
+          <li id="portfolio"><a href="/portfolio"><img src="assets/portfolio.png"></a></li>
+          <li id="github"><a href="https://github.com/housker"><img src="assets/github.png"></a></li>
+          <li id="linkedin"><a href="https://www.linkedin.com/in/adelle-housker/"><img src="assets/linkedin.png"></a></li>
+          <li id="email"><a href="#" onClick="app.openMail()"><img src="assets/email.png"></a></li>
+          <li><a href="https://icons8.com/"><img src="assets/icons8.png"></a></li>
+          <li class="training" onclick="app.toggleTraining()"><a href="#"><img src="assets/admin-black.png"></a></li>
+          <li class="training nodisplay" onclick="app.toggleTraining()"><a href="#"><img src="assets/admin-white.png"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <script type="text/javascript" src="assets/practiceDict.js"></script>
+  <script type="text/javascript" src="assets/consts.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
