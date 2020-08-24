@@ -1,0 +1,273 @@
+{
+  "Intents": [
+    {
+      "Tag": "title",
+      "Patterns": [
+        "What is Adelle's title?",
+        "What does Adelle do for a living?"
+      ],
+      "Responses": [
+        {
+          "Message": "Engineer II",
+          "El": ""
+        }
+      ]
+    },
+    {
+      "Tag": "company",
+      "Patterns": [
+        "Where does Adelle work?",
+        "What company does she work for?"
+      ],
+      "Responses": [
+        {
+          "Message": "Crowdstrike",
+          "El": ""
+        }
+      ]
+    },
+    {
+      "Tag": "location",
+      "Patterns": [
+        "Where is she currently?",
+        "Where is Adelle based out of?",
+        "What city are you in?"
+      ],
+      "Responses": [
+        {
+          "Message": "She works remotely from Minneapolis and is open to relocating.",
+          "El": ""
+        }
+      ]
+    },
+    {
+      "Tag": "education",
+      "Patterns": [
+        "Where did you go to school",
+        "What college did you attend?",
+        "What degree did you earn?",
+        "What's her highest level of education?"
+      ],
+      "Responses": [
+        {
+          "Message": "She earned her bachelor's from Carleton and her Master's from the University of Minnesota.",
+          "El": ""
+        }
+      ]
+    },
+    {
+      "Tag": "summary",
+      "Patterns": [
+        "Tell me a little about yourself.",
+        "Give a brief overview of your experience."
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "industry_experience",
+      "Patterns": [
+        "How many years have you been working as a software engineer?",
+        "How long have you been working in tech?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "total_experience",
+      "Patterns": [
+        "How many years of experience do you have?",
+        "How long have you been in the workforce?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "previous_roles",
+      "Patterns": [
+        "What have you done previously?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "previous_companies",
+      "Patterns": [
+        "Where have you worked previously?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "skills",
+      "Patterns": [
+        "Briefly describe your skills.",
+        "What are you strongest programming languages?",
+        "What are your strengths?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "interests",
+      "Patterns": [
+        "What are you interests?",
+        "Besides work, what do you like to do or learn about?",
+        "What was your most successful hacking of a non-computer system?"
+      ],
+      "Responses": [
+        {
+          "Message": "This is such an open-ended question, I think it could apply to so many areas. One kind of funny, kind of tenacious example would be the method with which I managed to afford living in Boston while making minimum wage, having no friends or relatives east of the Mississippi. I pared down my worldly belongings enough to fit them all in a carry on, and then met up with my Craigslist roommate in North End who definitively confirmed a mere three days before my flight that he would in fact not be withdrawing his offer to give me a room. What was to follow was a lifestyle hack that depended on minimalism, social networking, heavy use of forums and Craigslist, an intimate knowledge of public transit routes, and a functional degree of upper body strength. After a visit from the fire department on account of the other roommate microwaving a potato until it was a plume of smoke, I proceeded to enter into a succession of sublets, devising what by the end of that year had become a well-practiced technique of moving via public transportation, completed in two trips on the T, and done by noon in time to take up a closing shift. My social circle by that point had expanded enough to clue me in on better options, and I was lucky enough to be the proud recipient of a legally binding lease by New Year's. Having come from a town of 500 people in the public transit desert of the Midwest, discovering these little oases conducive of my gritty self-reliance in the midst of unattainable $1,000+ rent apartments, each one felt like the kind of narrow escape I'd only previously read about.",
+          "El": ""
+        }
+      ]
+    },
+    {
+      "Tag": "weaknesses",
+      "Patterns": [
+        "What are your weaknesses?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "favorite_project",
+      "Patterns": [
+        "Tell my about a project you've worked on.",
+        "What's the best project you've worked on, and what made it great?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "grit",
+      "Patterns": [
+        "What's an example when you stretched resources beyond what others thought was realistic?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "learn",
+      "Patterns": [
+        "Have you ever done a job you weren't qualified for? How did you learn what was needed?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "legacy_code",
+      "Patterns": [
+        "You’ve just inherited a huge legacy codebase that you’re not happy with. The code is messy, and looks rushed. How would you handle this situation? How would you work with this code in future and manage it?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "tradeoffs",
+      "Patterns": [
+        "The startup you’re working for has to make a choice. They can create a revenue-generating feature that will make thousands of users happy, and help the company grow and get to the next stage. Or, they can write unit tests for a critical section of the code. Which task do you think the company should work on, and why?",
+        "The site is slow and you’ve been tasked with improving the speed of a particular page. What is your process for pinpointing the slowdowns and what process would you take to communicate your improvements to the team?",
+        "In terms of code, what is more important to you assuming you could only choose one: formality of code (following best practices), or the impact that the code can have on users?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "workstyle",
+      "Patterns": [
+        "What type of work environment do you thrive in?"
+      ],
+      "Responses": null
+    },
+    {
+      "Tag": "contact",
+      "Patterns": [
+        "What is your contact info?",
+        "What is your contact information?",
+        "What's the best way to get in touch with you?",
+        "What's the best way to get in touch?",
+        "What's your email address?",
+        "If you join our team, when could you start?",
+        "What is your desired salary?",
+        "If you join our team, when could you start?",
+        "What is your desired salary (in your country's local currency)?"
+      ],
+      "Responses": [
+        {
+          "Message": "Let's discuss. Click the flashing link below to email housker@gmail.com.",
+          "El": "email"
+        }
+      ]
+    },
+    {
+      "Tag": "resume",
+      "Patterns": [
+        "Can I see your resume?",
+        "Where's your CV?"
+      ],
+      "Responses": [
+        {
+          "Message": "Let me direct your attention to her resume. Click the flashing link below.",
+          "El": "resume"
+        }
+      ]
+    },
+    {
+      "Tag": "portfolio",
+      "Patterns": [
+        "If you want to share some of your code with us, you can leave your GitHub link, or anything you think can show your past work.",
+        "Where would I be able to see some of your work?",
+        "What kind of projects have you worked on in the past?"
+      ],
+      "Responses": [
+        {
+          "Message": "Let me direct your attention to her portfolio. Click the flashing link below.",
+          "El": "portfolio"
+        }
+      ]
+    },
+    {
+      "Tag": "github",
+      "Patterns": [
+        "What's your github username?"
+      ],
+      "Responses": [
+        {
+          "Message": "Let me direct your attention to her github profile. Click the flashing link below.",
+          "El": "github"
+        }
+      ]
+    },
+    {
+      "Tag": "linkedin",
+      "Patterns": [
+        "Where can I find you on linkedin?"
+      ],
+      "Responses": [
+        {
+          "Message": "Let me direct your attention to her linkedin profile. Click the flashing link below.",
+          "El": "linkedin"
+        }
+      ]
+    },
+    {
+      "Tag": "prohibited",
+      "Patterns": [
+        "How old are you?",
+        "Do you own your own home",
+        "Are you a US citizen?",
+        "Were you ever declared bankrupt?",
+        "Are you marries?",
+        "How much do you weight?",
+        "Who is your pastor?"
+      ],
+      "Responses": [
+        {
+          "Message": "That question is prohibited by Title VII of the Civil Rights Act of 1964.",
+          "El": ""
+        }
+      ]
+    },
+    {
+      "Tag": "default",
+      "Patterns": [
+        "What is Adelle's full name?"
+      ],
+      "Responses": [
+        {
+          "Message": "Let me direct your attention to her resume. Click the flashing link below.",
+          "El": "resume"
+        }
+      ]
+    }
+  ]
+}

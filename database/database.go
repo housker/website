@@ -6,17 +6,20 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
+	"regexp"
 
+	"github.com/microcosm-cc/bluemonday"
 	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
 
-type helpers interface {
-	GetPatterns()
-	GetResponses()
-}
+// type questionPost struct {
+// 	inputString string
+// }
 
 type IntentProvider struct {
+	policy					*bluemonday.Policy
 	host             string
 	user             string
 	port             string
@@ -36,25 +39,24 @@ type Intent struct {
 }
 
 type Response struct {
-	Message string	// `json:"myName"`
-	El      string
+	Message string	`json:"message"`
+	El      string	`json:"el"`
 }
 
 func connectToPool(connectionString string) *sqlx.DB {
+	fmt.Println("connecting to pool")
 	return sqlx.MustConnect("postgres", connectionString)
 }
 
-// func (ip *database.IntentProvider) connectToPool() *sqlx.DB {
-// 	connectionString := fmt.Sprintf("postgresql://%s/%s?sslmode=disable", ws.dbConfig.host, ws.dbConfig.name)
-// 	return sqlx.MustConnect("postgres", connectionString)
-// }
-
 func SetIntentProvider() *IntentProvider {
+	p := bluemonday.StrictPolicy()
+	dbUser := os.Getenv("DB_USER")
 	dbHost := os.Getenv("DB_HOST")
 	dbName := os.Getenv("DB_NAME")
-	connectionString := fmt.Sprintf("postgresql://%s/%s?sslmode=disable", dbHost, dbName)
+	connectionString := fmt.Sprintf("postgresql://%s@%s/%s?sslmode=disable", dbUser, dbHost, dbName)
+	fmt.Println("connectionString", connectionString)
 	pool := connectToPool(connectionString)
-	return &IntentProvider{host: dbHost, user: os.Getenv("DB_USER"), port: os.Getenv("DB_PORT"), name: dbName, connectionString: connectionString, pool: pool}
+	return &IntentProvider{policy: p, host: dbHost, user: dbUser, port: os.Getenv("DB_PORT"), name: dbName, connectionString: connectionString, pool: pool}
 }
 
 // func setintentProvider() *database.IntentProvider {
@@ -63,6 +65,48 @@ func SetIntentProvider() *IntentProvider {
 // 	connectionString := fmt.Sprintf("postgresql://%s/%s?sslmode=disable", dbHost, dbName)
 // 	return &intentProvider{host: dbHost, user: os.Getenv("DB_USER"), port: os.Getenv("DB_PORT"), name: dbName, connectionString: connectionString}
 // }
+
+func (ip *IntentProvider) PredictionHandler(w http.ResponseWriter, r *http.Request) {
+	decoder := json.NewDecoder(r.Body)
+
+	var question string
+	err := decoder.Decode(&question)
+	if err != nil {
+			panic(err)
+	}
+	log.Println(question)
+
+
+	answer, _ := ip.getPrediction(question)
+	fmt.Println("answer: ", answer)
+
+	answerBytes, err := json.Marshal(answer)
+
+	if err != nil {
+		fmt.Println(fmt.Errorf("Error: %v", err))
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+
+	w.Write(answerBytes)
+}
+
+// NEVER CALL THIS FUNCTION WITHOUT FIRST SANITIZING IT
+func (ip *IntentProvider) getPrediction(question string) ([]byte, error) {
+	fmt.Println("question  inside", question)
+	question = ip.policy.Sanitize(question)
+	fmt.Println("question: ", question)
+
+	cmd := exec.Command("python", "-c", fmt.Sprintf("from ai.prediction import chatbot_response; print(chatbot_response('%v'))", question))
+	out, _ := cmd.CombinedOutput()
+	fmt.Println("out", out)
+	fmt.Println("string out", string(out))
+	// if err != nil {
+	// 	fmt.Println("Error executing prediction", err)
+	// }
+	re := regexp.MustCompile(`{[^\\"]+}`)
+	return re.Find([]byte(string(out))), nil
+}
 
 func (ip *IntentProvider) TagHandler(w http.ResponseWriter, r *http.Request) {
 	tags, _ := ip.GetTags()
